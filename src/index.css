@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+body {
+  background-color: #171923;
+}
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.book-card-flex {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  max-width: 270px;
+  width: 100%;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  height: 100vh;
+}
+
+.form-scroll {
+  padding-right: 10px;
+  max-height: 400px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
