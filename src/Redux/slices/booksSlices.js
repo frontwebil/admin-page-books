@@ -9,7 +9,11 @@ const initialState = {
 
 export const getAllBooks = createAsyncThunk("axiosBooks/get", async () => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}`, {
+      headers: {
+        "secret-api-key": `${import.meta.env.VITE_API_KEY}`,
+      },
+    });
     return response.data.books;
   } catch (error) {
     console.error(error);
@@ -25,7 +29,10 @@ export const addNewBook = createAsyncThunk(
         `${import.meta.env.VITE_API_URL}`,
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "secret-api-key": `${import.meta.env.VITE_API_KEY}`,
+          },
         }
       );
       return response.data;
@@ -40,7 +47,11 @@ export const deleteBook = createAsyncThunk(
   "axiosBooks/delete",
   async (bookID) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/${bookID}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/${bookID}`, {
+        headers: {
+          "secret-api-key": `${import.meta.env.VITE_API_KEY}`,
+        },
+      });
       return bookID;
     } catch (error) {
       console.error(error);
@@ -58,7 +69,10 @@ export const editBook = createAsyncThunk(
         `${import.meta.env.VITE_API_URL}/${bookID}`,
         newBookData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "secret-api-key": `${import.meta.env.VITE_API_KEY}`,
+          },
         }
       );
       return response.data.book;
